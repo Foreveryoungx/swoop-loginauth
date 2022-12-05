@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "Node.js Express + MongoDB: Login and Registration with mongoose",
   "main": "server.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "serve": "nodemon server.js"
+    "start": "nodemon server.js"
   },
   "keywords": [
     "node.js",
