@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Node.js Express + MongoDB: Login and Registration with mongoose",
   "main": "index.js",
-  "type": "module",
   "engines": {
     "node": "14.x"
   },
