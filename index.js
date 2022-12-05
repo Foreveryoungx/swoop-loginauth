@@ -44,7 +44,7 @@ db.mongoose
 
 /********** Routes **********/
 app.get("/", (req, res) => {
-    res.json({ message: "Swoop API application." });
+    res.json({ Title: "Swoop API application.", message:"Routes to access for this API is signup,login, signout will be POST request", signup:"https://swoop-login-auth.vercel.app/api/auth/sigup", login: "https://swoop-login-auth.vercel.app/api/auth/signin", signout: "https://swoop-login-auth.vercel.app/api/auth/signout" });
 });
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);

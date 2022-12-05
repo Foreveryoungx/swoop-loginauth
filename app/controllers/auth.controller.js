@@ -8,6 +8,8 @@ const bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
     const user = new User({
+        fname: req.body.fname,
+        lname: req.body.lname,
         username: req.body.username,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8)
@@ -96,6 +98,8 @@ exports.signin = (req, res) => {
 
             res.status(200).send({
                 id: user._id,
+                fname: user.fname,
+                lname: user.lname,
                 username: user.username,
                 email: user.email,
                 roles: authorities,
