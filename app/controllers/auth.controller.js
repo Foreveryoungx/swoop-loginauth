@@ -10,7 +10,6 @@ exports.signup = (req, res) => {
     const user = new User({
         fname: req.body.fname,
         lname: req.body.lname,
-        username: req.body.username,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8)
     });
@@ -38,7 +37,7 @@ exports.signup = (req, res) => {
                             return;
                         }
 
-                        res.send({message: `User ${req.body.username} was registered successfully!`});
+                        res.send({message: `User ${req.body.fname} was registered successfully!`});
                     });
                 }
             );
@@ -55,7 +54,7 @@ exports.signup = (req, res) => {
                         res.status(500).send({message: err});
                         return;
                     }
-                    res.send({message: `User ${req.body.username} was registered successfully!`});
+                    res.send({message: `User ${req.body.fname} was registered successfully!`});
                 });
             });
         }
@@ -64,7 +63,7 @@ exports.signup = (req, res) => {
 
 exports.signin = (req, res) => {
     User.findOne({
-        username: req.body.username,
+        email: req.body.email,
     })
         .populate("roles", "-__v")
         .exec((err, user) => {
@@ -100,7 +99,6 @@ exports.signin = (req, res) => {
                 id: user._id,
                 fname: user.fname,
                 lname: user.lname,
-                username: user.username,
                 email: user.email,
                 roles: authorities,
             });

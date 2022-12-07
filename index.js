@@ -1,22 +1,24 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const morgan = require('morgan');
+
 const cookieSession = require("cookie-session");
 
 const dbConfig = require("./app/config/db.config");
 
 const app = express();
-
 const corsOptions = {
-    origin : "http://localhost:8081",
+     origin : "http://localhost:8080",
 };
+app.use(morgan("dev"));
 
-app.use(cors(corsOptions));
-
+app.use(cors("*",corsOptions));
 //parse request
-app.use(express.json());
 
+app.use(express.json());
 //parse request of content-type - application/x-www-form-urlencoded
+
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieSession({
@@ -25,7 +27,6 @@ app.use(cookieSession({
     httpOnly: true
 })
 );
-
 /********** DataBase Connection **********/
 const db = require("./app/models")
 const Role = db.role;

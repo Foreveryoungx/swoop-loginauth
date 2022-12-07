@@ -5,13 +5,13 @@ const User = mongoose.model(
     new mongoose.Schema({
         fname: String,
         lname: String,
-        username: String,
         email: String,
         password: String,
         roles: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "Role"
+                ref: "Role",
+                default: ['user']
             }
         ]
     })
