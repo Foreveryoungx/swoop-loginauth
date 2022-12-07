@@ -9,11 +9,11 @@ const dbConfig = require("./app/config/db.config");
 
 const app = express();
 const corsOptions = {
-     origin : "http://localhost:8080",
+     origin : "*",
 };
 app.use(morgan("dev"));
 
-app.use(cors("*",corsOptions));
+app.use(cors(corsOptions));
 //parse request
 
 app.use(express.json());
