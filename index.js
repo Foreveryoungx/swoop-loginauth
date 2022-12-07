@@ -1,6 +1,6 @@
 require("dotenv").config();
-const express = require("express");
 const cors = require("cors");
+const express = require("express");
 const morgan = require('morgan');
 
 const cookieSession = require("cookie-session");
@@ -11,9 +11,7 @@ const app = express();
 
 app.use(morgan("dev"));
 
-app.use(cors({
-    origin: "*", // allow to server to accept request from different origin
-}));
+app.use(cors());
 //parse request
 
 app.use(express.json());
