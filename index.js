@@ -8,12 +8,14 @@ const cookieSession = require("cookie-session");
 const dbConfig = require("./app/config/db.config");
 
 const app = express();
-const corsOptions = {
-     origin : "*",
-};
+
 app.use(morgan("dev"));
 
-app.use(cors(corsOptions));
+app.use(cors({
+    origin: "*", // allow to server to accept request from different origin
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true // allow session cookie from browser to pass through
+}));
 //parse request
 
 app.use(express.json());
