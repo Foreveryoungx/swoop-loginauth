@@ -11,7 +11,7 @@ const app = express();
 
 app.use(morgan("dev"));
 
-app.options('*',cors());
+app.use(cors());
 //parse request
 
 app.use(express.json());
